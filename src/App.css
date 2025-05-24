@@ -1,0 +1,13 @@
+@font-face {
+  font-family: 'sprintura';
+  src: url('./assets/Fonts/sprintura.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'sprintura-outline';
+  src: url('../src/assets/Fonts/sprintura-outline.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
