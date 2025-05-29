@@ -1,5 +1,6 @@
 import React from 'react';
 import './Hero.css';
+import hero_img from '/images/hero_img.jpg';
 
 const Hero = () => {
   return (
@@ -12,7 +13,7 @@ const Hero = () => {
         <button className="cta-button">FIND MY FIT</button>
       </div>
       <div className="hero-image">
-        <img src="/athlete.png" alt="Athlete" />
+        <img src = {hero_img} alt="Athlete" />
       </div>
     </section>
   );

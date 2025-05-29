@@ -1,7 +1,7 @@
 import React from 'react';
 import './NavBar.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Logo from '../../../public/images/Logo.png'
+import Logo from '../../../public/images/Athlistar_logo-white.png'
 
 
 function NavBar() {
@@ -9,7 +9,11 @@ function NavBar() {
     <nav className="navbar navbar-expand-lg navbar-dark custom-navbar">
       <div className="container-fluid">
         <a className="navbar-brand d-flex align-items-center" href="#">
-          <img src={Logo} alt="Athlistar Logo" className="logo-img" />
+         <img
+      src={Logo}
+      alt="Athlistar Logo"
+      style={{ height: '60px', width: 'auto', objectFit: 'contain' }}
+    />
         </a>
         <button
           className="navbar-toggler"
