@@ -1,0 +1,70 @@
+.community-section {
+  background: linear-gradient(135deg, #c3ff00, #aaff00);
+  color: black;
+  text-align: center;
+  padding: 3rem 2rem;
+  border-radius: 12px;
+  margin: 2rem auto;
+  max-width: 90%;
+}
+
+.community-heading {
+  font-size: 2rem;
+  font-weight: bold;
+  font-family: 'sprintura';
+  margin-bottom: 1rem;
+}
+
+.bold-text {
+  font-weight: 900;
+}
+
+.outlined-text {
+  font-family: 'sprintura';
+  font-weight: 900;
+  font-style: italic;
+  color: #ffffff; /* Inner part of the text will be white */
+  text-shadow: 
+    -1px -1px 0 #000,  
+     1px -1px 0 #000,  
+    -1px  1px 0 #000,  
+     1px  1px 0 #000; /* Creates black outline */
+}
+
+.subheading {
+  font-weight: bold;
+  margin: 0.5rem 0;
+}
+
+.description {
+  font-size: 0.95rem;
+  margin-bottom: 2rem;
+}
+
+.invite-btn {
+  background-color: #000000;
+  border: none;
+  padding: 0.4rem 1.2rem;
+  font-weight: bold;
+  color: #ffffff;
+  cursor: pointer;
+  height: 2.5rem;
+  width: 13rem;
+  transition: transform 0.2s ease;
+  clip-path: polygon(
+    0 0,         /* top-left */
+    calc(100% - 1.2rem) 0,  /* top-right corner before cut */
+    100% 1.2rem, /* cut into top-right */
+    100% 100%,   /* bottom-right */
+    1.2rem 100%, /* cut into bottom-left */
+    0 calc(100% - 1.2rem)  /* bottom-left corner after cut */
+  );
+}
+
+.invite-btn:hover {
+  transform: scale(1.05);
+}
+
+.arrow {
+  margin-left: 6px;
+}

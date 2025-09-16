@@ -1,19 +1,40 @@
 import React from 'react';
 import './NavBar.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Logo from '../../../public/images/Athlistar_logo-white.png'
+import Logo from '/images/Athlistar_logo-white.png'
+import { AppProvider } from '@toolpad/core/AppProvider';
+import { Account } from '@toolpad/core/Account';
 
+const demoSession = {
+  user: {
+    name: 'Bharat Kashyap',
+    email: 'bharatkashyap@outlook.com',
+    image: 'https://avatars.githubusercontent.com/u/19550456',
+  },
+};
 
 function NavBar() {
+  const [session, setSession] = React.useState(demoSession);
+  const authentication = React.useMemo(() => {
+    return {
+      signIn: () => {
+        setSession(demoSession);
+      },
+      signOut: () => {
+        setSession(null);
+      },
+    };
+  }, []);
+
   return <>
     <nav className="navbar navbar-expand-lg navbar-dark custom-navbar">
       <div className="container-fluid">
         <a className="navbar-brand d-flex align-items-center" href="#">
-         <img
-      src={Logo}
-      alt="Athlistar Logo"
-      style={{ height: '60px', width: 'auto', objectFit: 'contain' }}
-    />
+          <img
+            src={Logo}
+            alt="Athlistar Logo"
+            style={{ height: '60px', width: 'auto', objectFit: 'contain' }}
+          />
         </a>
         <button
           className="navbar-toggler"
@@ -46,6 +67,13 @@ function NavBar() {
             </li>
             <li className="nav-item">
               <a className="nav-link" href="#">Community</a>
+            </li>
+            <li className="nav-item">
+              <AppProvider authentication={authentication} session={session}>
+                {/* preview-start */}
+                <Account />
+                {/* preview-end */}
+              </AppProvider>
             </li>
           </ul>
         </div>
