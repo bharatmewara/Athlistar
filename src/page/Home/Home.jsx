@@ -1,12 +1,13 @@
 import './Home.css'
 import NavBar from '../../components/Navbar/NavBar'
-import Hero from '../../components/HeroSection/Hero'
-import WhyUseAthlistar from '../../components/WhyUseAthlistar/WhyUseAthlistar'
-import ShoeFinderAndCoaching from '../../components/ShoeFinderAndCoaching/ShoeFinderAndCoaching';
-import AthleteSponsorship from '../../components/AtheliteSponsorship/AtheliteSponsorship';
-import ShopSection from '../../components/ShopSection/ShopSection';
-import CommunityAccess from '../../components/CommunityAccess/CommunityAccess';
-import HearFromAtheletes from '../../components/HearFromAtheletes/HearFromAtheletes';
+import Hero from '../../components/Home/HeroSection/Hero'
+import WhyUseAthlistar from '../../components/Home/WhyUseAthlistar/WhyUseAthlistar'
+import ShoeFinderAndCoaching from '../../components/Home/ShoeFinderAndCoaching/ShoeFinderAndCoaching';
+import AthleteSponsorship from '../../components/Home/AtheliteSponsorship/AtheliteSponsorship';
+import ShopSection from '../../components/Home/ShopSection/ShopSection';
+import CommunityAccess from '../../components/Home/CommunityAccess/CommunityAccess';
+import HearFromAtheletes from '../../components/Home/HearFromAtheletes/HearFromAtheletes';
+import Footer from '../../components/Footer/Footer';
 
 function Home() {
   return (
@@ -21,6 +22,7 @@ function Home() {
       <br/>
       <CommunityAccess/>
       <HearFromAtheletes/>
+      <Footer/>
     </>
   )
 }

@@ -1,0 +1,102 @@
+.omov-container {
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  max-width: 1200px;
+  margin: 2.5rem auto;
+  padding: 0 1rem;
+  flex-wrap: wrap;
+}
+
+.omov-card {
+  background: #f2f2f2;
+  flex: 1 1 340px;
+  padding: 2.5rem 2rem;
+  min-width: 260px;
+  max-width: 600px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.omov-title-row {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1.2rem;
+}
+
+.omov-accent-bar {
+  width: 14px;
+  height: 38px;
+  background: #c6ff00;
+  border-radius: 2px;
+  margin-right: 14px;
+  flex-shrink: 0;
+}
+
+.omov-title {
+  font-family: 'Orbitron', 'Arial Black', Arial, sans-serif;
+  font-size: 2rem;
+  font-weight: 900;
+  margin: 0;
+  color: #181818;
+  word-break: break-word;
+}
+
+.omov-desc {
+  font-family: 'Inter', Arial, sans-serif;
+  font-size: 1.08rem;
+  color: #222;
+  margin-bottom: 1.1rem;
+  margin-top: 0;
+}
+
+.omov-list {
+  font-family: 'Inter', Arial, sans-serif;
+  font-size: 1.08rem;
+  color: #222;
+  margin: 0 0 0 1.2rem;
+  padding: 0;
+}
+
+.omov-list li {
+  margin-bottom: 0.5rem;
+  list-style-type: disc;
+  word-break: break-word;
+}
+
+@media (max-width: 900px) {
+  .omov-container {
+    flex-direction: column;
+    gap: 2rem;
+    padding: 0 0.5rem;
+  }
+  .omov-card {
+    max-width: 100%;
+    min-width: 0;
+    padding: 1.2rem 1rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .omov-container {
+    margin: 1.2rem 0;
+    padding: 0 0.2rem;
+  }
+  .omov-card {
+    padding: 1rem 0.5rem;
+    border-radius: 8px;
+  }
+  .omov-title {
+    font-size: 1.2rem;
+  }
+  .omov-accent-bar {
+    width: 8px;
+    height: 28px;
+    margin-right: 10px;
+  }
+  .omov-desc, .omov-list {
+    font-size: 0.98rem;
+  }
+}

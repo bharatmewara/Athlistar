@@ -1,0 +1,123 @@
+.about-banner {
+  margin: 2rem auto 2.5rem auto;
+  max-width: 1100px;
+}
+
+.about-banner-bg {
+  background: #c6ff00;
+  border-radius: 10px;
+  padding: 1.2rem 0 1.2rem 0;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.about-banner-bg h1 {
+  font-family: 'Orbitron', 'Arial Black', Arial, sans-serif;
+  font-size: 2.3rem;
+  font-weight: 900;
+  letter-spacing: 2px;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+}
+
+.about-banner-about{
+    font-family: 'sprintura';
+}
+
+.about-banner-athlistar{
+    font-family: sprintura;
+  color: #d0ff00;
+  -webkit-text-stroke: 0.5px black;
+
+  /* 3D shadow layers */
+  text-shadow:
+    1px 1px 0 #000,
+    1px 1px 0 #000,
+    2px 2px 0 #000,
+    3px 3px 0 #333,
+    2px 2px 6px rgba(0, 0, 0, 0.4),
+    0 0 10px #d0ff00;
+
+}
+
+.about-banner-bg h1 {
+  font-family: 'Orbitron', 'Arial Black', Arial, sans-serif;
+  font-size: 2.3rem;
+  font-weight: 900;
+  letter-spacing: 2px;
+  margin: 0;
+}
+.about-highlight {
+  background: #181818;
+  color: #c6ff00;
+  padding: 0 8px;
+  border-radius: 3px;
+  font-style: italic;
+  margin-right: 6px;
+}
+.about-subtitle {
+  font-family: 'Inter', Arial, sans-serif;
+  font-size: 1rem;
+  margin-top: 0.5rem;
+  color: #181818;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
+.about-idea-section {
+  display: flex;
+  gap: 2.5rem;
+  align-items: flex-start;
+  margin: 2.5rem auto 0 auto;
+  max-width: 1100px;
+  background: #fff;
+  border-radius: 12px;
+  padding: 2rem 2.5rem;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.03);
+}
+.about-idea-img {
+  flex: 1.1;
+  min-width: 260px;
+  max-width: 400px;
+}
+.about-idea-content {
+  flex: 2;
+}
+.about-idea-content h2 {
+  font-family: 'Orbitron', 'Arial Black', Arial, sans-serif;
+  font-size: 1.4rem;
+  font-weight: 900;
+  margin: 0 0 1rem 0;
+  display: flex;
+  align-items: center;
+}
+.about-idea-bar {
+  display: inline-block;
+  width: 7px;
+  height: 32px;
+  background: #c6ff00;
+  margin-right: 14px;
+  border-radius: 2px;
+}
+.about-idea-content p {
+  font-family: 'Inter', Arial, sans-serif;
+  font-size: 1.08rem;
+  color: #222;
+  margin-bottom: 1.1rem;
+  margin-top: 0;
+}
+
+@media (max-width: 900px) {
+  .about-idea-section {
+    flex-direction: column;
+    padding: 1.2rem 1rem;
+    gap: 1.5rem;
+  }
+  .about-idea-img {
+    max-width: 100%;
+  }
+}

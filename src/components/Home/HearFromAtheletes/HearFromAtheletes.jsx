@@ -8,7 +8,7 @@ const testimonials = [
     avatar: "https://randomuser.me/api/portraits/men/32.jpg",
     review:
       '“ATHLISTAR transformed my training with expert coaching and the perfect shoe match—my performance has never been better!”',
-    stars: 5,
+    stars: 3,
     featured: false,
   },
   {
@@ -56,11 +56,16 @@ export default function HearFromAtheletes() {
                 <span className="testimonial-name">{t.name}</span>
                 <span className="testimonial-role">{t.role}</span>
               </div>
-              <div className="testimonial-stars">
-                {[...Array(t.stars)].map((_, i) => (
-                  <span className="star" key={i}>★</span>
-                ))}
-              </div>
+                    <div className="testimonial-stars">
+                        {[...Array(5)].map((_, i) => (
+                            <span
+                                className={`star${i < t.stars ? " filled" : ""}`}
+                                key={i}
+                            >
+                                ★
+                            </span>
+                        ))}
+                    </div>
             </div>
           </div>
         ))}

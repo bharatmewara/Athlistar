@@ -1,14 +1,14 @@
 import { Routes, Route } from "react-router-dom";
 import Home from "../page/Home/Home";
-// import About from "../pages/About/About";
+import About from "../page/AboutAthelistar/AboutAthelistar";
 // import Contact from "../pages/Contact/Contact";
 
 const AppRoutes = () => {
   return (
     <Routes>
       <Route path="/" element={<Home />} />
-      {/* <Route path="/about" element={<About />} />
-      <Route path="/contact" element={<Contact />} /> */}
+       <Route path="/AboutAthelistar" element={<About />} />
+      {/*<Route path="/contact" element={<Contact />} /> */}
     </Routes>
   );
 };
