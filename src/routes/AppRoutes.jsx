@@ -1,16 +1,22 @@
 import { Routes, Route } from "react-router-dom";
-import Home from "../page/Home/Home";
-import About from "../page/AboutAthelistar/AboutAthelistar";
-// import Contact from "../pages/Contact/Contact";
+import Home from "../page/Home/Home"
+import About from "../page/AboutAthlistar/AboutAthlistar";
+import ContactUs from "../page/ContactUs/ContactUs";
+import NavBar from "../components/Navbar/NavBar";
+import Footer from "../components/Footer/Footer";
+import ScrollToTop from "../components/ScrollToTop/ScrollToTop";
 
 const AppRoutes = () => {
-  return (
+  return <>
+    <NavBar/>
+    <ScrollToTop/>
     <Routes>
       <Route path="/" element={<Home />} />
-       <Route path="/AboutAthelistar" element={<About />} />
-      {/*<Route path="/contact" element={<Contact />} /> */}
+       <Route path="/AboutAthlistar" element={<About />} />
+      <Route path="/ContactUs" element={<ContactUs />} />
     </Routes>
-  );
+    <Footer/>
+  </>;
 };
 
 export default AppRoutes;

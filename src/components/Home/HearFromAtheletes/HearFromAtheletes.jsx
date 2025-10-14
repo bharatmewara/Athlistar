@@ -56,16 +56,11 @@ export default function HearFromAtheletes() {
                 <span className="testimonial-name">{t.name}</span>
                 <span className="testimonial-role">{t.role}</span>
               </div>
-                    <div className="testimonial-stars">
-                        {[...Array(5)].map((_, i) => (
-                            <span
-                                className={`star${i < t.stars ? " filled" : ""}`}
-                                key={i}
-                            >
-                                ★
-                            </span>
-                        ))}
-                    </div>
+              <div className="testimonial-stars">
+                {Array.from({ length: 5 }, (_, i) => (
+                  <span key={i} className={i < t.stars ? "star filled" : "star empty"}>★</span>
+                ))}
+              </div>
             </div>
           </div>
         ))}

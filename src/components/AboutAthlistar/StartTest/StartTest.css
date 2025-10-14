@@ -1,0 +1,85 @@
+.start-test-container {
+    background-color: #c6ff00;
+    padding: 60px 40px;
+    text-align: center;
+    border-radius: 12px;
+    margin: 40px auto;
+    max-width: 90%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.start-test-heading {
+    font-family: 'sprintura', Arial, sans-serif;
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #000;
+    margin: 0;
+    letter-spacing: 2px;
+}
+
+.fit-test {
+    color: #fff;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.start-test-para {
+    font-size: 1.1rem;
+    color: #000;
+    margin: 10px 0 30px 0;
+    font-weight: 500;
+    max-width: 600px;
+}
+
+.find-fit-btn {
+    background-color: #000;
+  border: none;
+  padding: 0.4rem 1.2rem;
+  font-weight: bold;
+  color: #fff;
+  cursor: pointer;
+  height: 2.5rem;
+  width: 13rem;
+  transition: transform 0.2s ease;
+  clip-path: polygon(
+    0 0,         /* top-left */
+    calc(100% - 1.2rem) 0,  /* top-right corner before cut */
+    100% 1.2rem, /* cut into top-right */
+    100% 100%,   /* bottom-right */
+    1.2rem 100%, /* cut into bottom-left */
+    0 calc(100% - 1.2rem)  /* bottom-left corner after cut */
+  );
+}
+
+.find-fit-btn:hover {
+    background-color: #333;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.arrow {
+    color: #d0ff00;
+    font-size: 1.2rem;
+    transition: transform 0.3s ease;
+}
+
+.find-fit-btn:hover .arrow {
+    transform: translate(2px, -2px);
+}
+
+@media (max-width: 768px) {
+    .start-test-container {
+        margin: 20px;
+        padding: 40px 20px;
+    }
+    
+    .start-test-heading {
+        font-size: 2rem;
+    }
+    
+    .start-test-para {
+        font-size: 1rem;
+    }
+}

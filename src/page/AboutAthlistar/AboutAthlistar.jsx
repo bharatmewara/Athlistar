@@ -1,15 +1,13 @@
 import React from 'react';
-import './AboutAthelistar.css';
-import Navbar from '../../components/Navbar/NavBar';
-import Footer from '../../components/Footer/Footer';
-import OurMissionOurVision from './OurMissionOurVision/OurMissionOurVision';
-import ProblemsWeAreSolving from './ProblemsWeAreSolving/ProblemsWeAreSolving';
-import AthlistarSolution from './AthelistarSolution/AthelistarSolution';
+import './AboutAthlistar.css';
+import OurMissionOurVision from '../../components/AboutAthlistar/OurMissionOurVision/OurMissionOurVision';
+import ProblemsWeAreSolving from '../../components/AboutAthlistar/ProblemsWeAreSolving/ProblemsWeAreSolving';
+import AthlistarSolution from '../../components/AboutAthlistar/AthlistarSolution/AthlistarSolution';
+import StartTest from '../../components/AboutAthlistar/StartTest/StartTest';
 
-const AboutAthelistar = () => {
+const AboutAthlistar = () => {
     return (
         <>
-            <Navbar />
             <div className="about-banner">
                 <div className="about-banner-bg">
                     <h1>
@@ -47,9 +45,9 @@ const AboutAthelistar = () => {
             <OurMissionOurVision />
             <ProblemsWeAreSolving />
             <AthlistarSolution />
-            <Footer />
+            <StartTest/>
         </>
     );
 };
 
-export default AboutAthelistar;
+export default AboutAthlistar;
