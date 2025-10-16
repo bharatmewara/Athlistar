@@ -1,9 +1,10 @@
 import React from 'react';
 import './NavBar.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Logo from '/images/Athlistar_logo-white.png'
+import Logo from '/images/Athlistar_logo-white.png';
 import { AppProvider } from '@toolpad/core/AppProvider';
 import { Account } from '@toolpad/core/Account';
+import { NavLink } from 'react-router-dom'; // ✅ Import NavLink from React Router
 
 const demoSession = {
   user: {
@@ -15,6 +16,7 @@ const demoSession = {
 
 function NavBar() {
   const [session, setSession] = React.useState(demoSession);
+
   const authentication = React.useMemo(() => {
     return {
       signIn: () => {
@@ -26,16 +28,17 @@ function NavBar() {
     };
   }, []);
 
-  return <>
+  return (
     <nav className="navbar navbar-expand-lg navbar-dark custom-navbar">
       <div className="container-fluid">
-        <a className="navbar-brand d-flex align-items-center" href="#">
+        <NavLink className="navbar-brand d-flex align-items-center" to="/">
           <img
             src={Logo}
             alt="Athlistar Logo"
             style={{ height: '60px', width: 'auto', objectFit: 'contain' }}
           />
-        </a>
+        </NavLink>
+
         <button
           className="navbar-toggler"
           type="button"
@@ -51,35 +54,75 @@ function NavBar() {
         <div className="collapse navbar-collapse justify-content-end" id="navbarNav">
           <ul className="navbar-nav">
             <li className="nav-item">
-              <a className="nav-link active" href="/">Home</a>
+              <NavLink
+                to="/"
+                className={({ isActive }) =>
+                  `nav-link ${isActive ? 'active' : ''}`
+                }
+              >
+                Home
+              </NavLink>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="#">Shoe Match Tool</a>
+              <NavLink
+                to="/ShoeMatchingTool"
+                className={({ isActive }) =>
+                  `nav-link ${isActive ? 'active' : ''}`
+                }
+              >
+                Shoe Match Tool
+              </NavLink>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="#">Coaching</a>
+              <NavLink
+                to="/Coaching"
+                className={({ isActive }) =>
+                  `nav-link ${isActive ? 'active' : ''}`
+                }
+              >
+                Coaching
+              </NavLink>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="#">Shop</a>
+              <NavLink
+                to="/Shop"
+                className={({ isActive }) =>
+                  `nav-link ${isActive ? 'active' : ''}`
+                }
+              >
+                Shop
+              </NavLink>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="#">Sponsorship</a>
+              <NavLink
+                to="/Sponsorship"
+                className={({ isActive }) =>
+                  `nav-link ${isActive ? 'active' : ''}`
+                }
+              >
+                Sponsorship
+              </NavLink>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="#">Community</a>
+              <NavLink
+                to="/Community"
+                className={({ isActive }) =>
+                  `nav-link ${isActive ? 'active' : ''}`
+                }
+              >
+                Community
+              </NavLink>
             </li>
             <li className="nav-item">
               <AppProvider authentication={authentication} session={session}>
-                {/* preview-start */}
                 <Account />
-                {/* preview-end */}
               </AppProvider>
             </li>
           </ul>
         </div>
       </div>
     </nav>
-  </>
+  );
 }
 
 export default NavBar;

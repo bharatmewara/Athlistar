@@ -55,8 +55,9 @@
 
 .find-fit-btn:hover {
     background-color: #333;
-    transform: translateY(-2px);
+    transform: translateY(-1.5px);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    border: 2px solid #fff;
 }
 
 .arrow {

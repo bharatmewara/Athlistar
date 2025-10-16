@@ -1,3 +1,4 @@
+/* Your existing header and section styles (unchanged) */
 .problems-section {
   background: #fff;
   font-family: "Poppins", sans-serif;
@@ -18,9 +19,9 @@
 .problems-headline {
   display: block;
   font-family: 'sprintura';
-  font-size: 1.5rem;
+  font-size: 2rem;
   font-weight: 900;
-  letter-spacing: 1.5px;
+  letter-spacing: 1.5px; 
   gap: 12px;
 }
 
@@ -53,19 +54,6 @@
   text-align: left;
 }
 
-.problems-section {
-  padding: 60px 40px;
-  background: #fff;
-  font-family: "Poppins", sans-serif;
-}
-
-.subtitle {
-  color: #444;
-  max-width: 700px;
-  margin: 0 auto 40px;
-  font-size: 1rem;
-}
-
 .problems-grid {
   display: flex;
   flex-wrap: wrap;
@@ -73,14 +61,18 @@
   gap: 30px;
 }
 
+/* === CARD STYLING CHANGES START HERE === */
+
 .problem-card {
-  position: relative;
-  width: 280px;
+  position: relative; /* Crucial for positioning overlays */
+  width: 300px;
+  height: 300px; /* Give the card a fixed height */
   border-radius: 12px;
-  overflow: hidden;
+  overflow: hidden; /* Keeps the image and overlays contained */
   background: #f8f8f8;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
 }
 
 .problem-card:hover {
@@ -89,14 +81,34 @@
 }
 
 .problem-image {
+  /* Make the image fill the entire card */
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
-  height: 180px;
+  height: 100%;
   object-fit: cover;
-  display: block;
+  transition: transform 0.4s ease; /* For hover zoom effect */
+}
+
+/* Add a dark gradient for text readability over the image */
+.problem-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.7) 10%, transparent 40%);
+  z-index: 1;
 }
 
 .problem-info {
-  position: relative;
+  /* Position the info card as an overlay at the bottom */
+  position: absolute;
+  bottom: 15px;
+  left: 15px;
+  right: 15px;
+  z-index: 2; /* Place it above the image and gradient */
+  
+  /* Keep your original styling for the info card */
   background: #fff;
   display: flex;
   align-items: center;
@@ -104,15 +116,21 @@
   justify-content: flex-start;
   padding: 15px 18px;
   border-radius: 10px;
-  margin: -25px auto 10px;
-  width: 85%;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  transition: opacity 0.3s ease, transform 0.3s ease;
 }
 
 .problem-icon {
-  width: 26px;
-  height: 26px;
-  object-fit: contain;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: #a4f539;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  color: #2c2c2c;
+  flex-shrink: 0; /* Prevents icon from shrinking */
 }
 
 .problem-info h3 {
@@ -123,27 +141,73 @@
 }
 
 .hover-description {
+  /* This is the green hover state overlay */
   position: absolute;
   inset: 0;
   background: #c6ff00;
   color: #000;
+  z-index: 3; /* Highest layer */
+  
+  /* Arrange content vertically from the top */
   display: flex;
-  justify-content: center;
-  align-items: center;
+  flex-direction: column;
+  justify-content: flex-start; /* Align content to the top */
+  padding: 25px;
+  
+  /* Hide by default, show on hover */
   opacity: 0;
-  padding: 20px;
   transition: opacity 0.4s ease;
+}
+
+.problem-info-hover {
+  /* This is the info card inside the hover state */
+  background: #fff;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 15px 18px;
+  border-radius: 10px;
+  width: 100%;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  margin-bottom: 20px; /* Space between info card and description */
+  box-sizing: border-box; /* Ensures padding is included in width */
+}
+
+.problem-info-hover h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #000;
+  text-align: left;
+}
+
+.hover-description p { /* Added a selector for the description text */
   font-size: 0.95rem;
   font-weight: 500;
   text-align: center;
+  line-height: 1.6;
+  margin: 0;
 }
 
+/* --- Hover Effects --- */
 .problem-card:hover .hover-description {
   opacity: 1;
 }
 
+.problem-card:hover .problem-info {
+  /* Hide the default info card on hover */
+  opacity: 0;
+  transform: translateY(10px);
+}
 
-/* Responsive styles */
+.problem-card:hover .problem-image {
+  /* Optional: Add a subtle zoom to the image on hover */
+  transform: scale(1.05);
+}
+
+/* === CARD STYLING CHANGES END HERE === */
+
+
+/* Your existing responsive styles (unchanged) */
 @media (max-width: 1100px) {
   .problems-header-flex {
     flex-direction: column;
@@ -162,9 +226,6 @@
     width: 100%;
     max-width: 340px;
   }
-  .problem-card-img {
-    height: 160px;
-  }
 }
 
 @media (max-width: 600px) {
@@ -178,19 +239,4 @@
     max-width: 100%;
     border-radius: 8px;
   }
-  .problem-card-img {
-    height: 100px;
-    border-radius: 8px 8px 0 0;
-  }
-  .card-overlay {
-    padding: 10px 8px;
-    font-size: 0.98rem;
-    border-radius: 0 0 8px 8px;
-  }
-  .hover-description {
-    font-size: 0.95rem;
-    padding: 10px 8px;
-    border-radius: 0 0 8px 8px;
-  }
 }
-/* Feature Card Flip Styles */ 
