@@ -169,6 +169,280 @@
   margin: 0;
 }
 
+/* Stepper Styles */
+.back-btn-fixed {
+  background: rgba(255, 255, 255, 0.9);
+  border: none;
+  padding: 10px 15px;
+  border-radius: 8px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 600;
+  color: var(--dark-text);
+  transition: all 0.3s ease;
+  margin-bottom: 20px;
+}
+
+.back-btn-fixed:hover {
+  background: var(--white);
+  transform: scale(1.05);
+}
+
+.stepper-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+.stepper-header {
+  margin-bottom: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.stepper-progress {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+}
+
+.stepper-progress::before {
+  content: '';
+  position: absolute;
+  top: 20px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--medium-grey);
+  z-index: 1;
+}
+
+.step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  z-index: 2;
+}
+
+.step-number {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--medium-grey);
+  color: var(--dark-text);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  margin-bottom: 8px;
+  transition: all 0.3s ease;
+}
+
+.step.active .step-number {
+  background: var(--primary-green);
+  color: var(--dark-text);
+}
+
+.step-label {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--dark-text);
+  text-align: center;
+  max-width: 100px;
+}
+
+.stepper-content {
+  background: var(--white);
+  border: 1px solid var(--card-border);
+  border-radius: 12px;
+  padding: 40px;
+  margin-bottom: 30px;
+  box-shadow: 0 4px 10px var(--card-shadow);
+}
+
+.step-layout {
+  display: flex;
+  gap: 40px;
+}
+
+.form-section {
+  flex: 0 0 60%;
+}
+
+.sport-card-section {
+  flex: 0 0 35%;
+}
+
+.selected-sport-card {
+  background: var(--white);
+  border: 2px solid var(--primary-green);
+  border-radius: 12px;
+  padding: 20px;
+  text-align: center;
+}
+
+.selected-sport-card img {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+  margin-bottom: 15px;
+}
+
+.selected-sport-card h4 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 20px;
+  color: var(--dark-text);
+}
+
+.athlete-review {
+  text-align: left;
+  background: var(--light-grey);
+  padding: 15px;
+  border-radius: 8px;
+  margin-top: 15px;
+}
+
+.athlete-review h5 {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 10px;
+  color: var(--dark-text);
+}
+
+.athlete-name {
+  font-weight: 600;
+  color: var(--primary-green);
+  margin-bottom: 8px;
+}
+
+.review-text {
+  font-style: italic;
+  color: var(--dark-text);
+  font-size: 0.9rem;
+  line-height: 1.4;
+}
+
+.form-group {
+  margin-bottom: 25px;
+}
+
+.form-group label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: var(--dark-text);
+}
+
+.form-input {
+  width: 100%;
+  padding: 12px;
+  border: 2px solid var(--card-border);
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+}
+
+.form-input:focus {
+  outline: none;
+  border-color: var(--primary-green);
+}
+
+.radio-group, .checkbox-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.radio-label, .checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  font-weight: normal;
+}
+
+.step-content h3 {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: var(--dark-text);
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.results-step {
+  text-align: center;
+}
+
+.login-form {
+  max-width: 300px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.login-btn {
+  background: var(--primary-green);
+  color: var(--dark-text);
+  border: none;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.login-btn:hover {
+  background: #b8e600;
+}
+
+.stepper-navigation {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav-btn {
+  padding: 12px 24px;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.3s ease;
+}
+
+.prev-btn {
+  background: var(--light-grey);
+  color: var(--dark-text);
+}
+
+.prev-btn:hover:not(:disabled) {
+  background: var(--medium-grey);
+}
+
+.next-btn {
+  background: var(--primary-green);
+  color: var(--dark-text);
+}
+
+.next-btn:hover:not(:disabled) {
+  background: #b8e600;
+}
+
+.nav-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
 /* Responsive Adjustments */
 @media (max-width: 768px) {
   .tool-header {
@@ -181,7 +455,6 @@
     font-size: 1.4rem;
   }
   .sports-grid {
-    /* Auto-fit is great for tablets/smaller desktops */
     grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
     gap: 15px;
   }
@@ -194,6 +467,37 @@
   }
   .sport-name {
     font-size: 1rem;
+  }
+  .stepper-progress {
+    flex-direction: column;
+    gap: 20px;
+  }
+  .stepper-progress::before {
+    display: none;
+  }
+  .step {
+    flex-direction: row;
+    gap: 15px;
+  }
+  .step-label {
+    max-width: none;
+  }
+  .stepper-content {
+    padding: 20px;
+  }
+  .step-layout {
+    flex-direction: column;
+    gap: 20px;
+  }
+  .form-section {
+    flex: none;
+  }
+  .sport-card-section {
+    flex: none;
+  }
+  .radio-group, .checkbox-group {
+    flex-direction: column;
+    gap: 10px;
   }
 }
 
@@ -208,7 +512,6 @@
     font-size: 1.2rem;
   }
   .sports-grid {
-    /* 2 columns on very small screens, as you had */
     grid-template-columns: repeat(2, 1fr); 
     gap: 10px;
   }

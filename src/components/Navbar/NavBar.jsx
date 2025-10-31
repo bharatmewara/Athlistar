@@ -4,7 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Logo from '/images/Athlistar_logo-white.png';
 import { AppProvider } from '@toolpad/core/AppProvider';
 import { Account } from '@toolpad/core/Account';
-import { NavLink } from 'react-router-dom'; // ✅ Import NavLink from React Router
+import { NavLink } from 'react-router-dom';
 
 const demoSession = {
   user: {
