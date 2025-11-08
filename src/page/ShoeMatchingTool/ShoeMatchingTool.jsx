@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import './ShoeMatchingTool.css';
-import { MdOutlineSportsHandball } from 'react-icons/md';
+import { MdOutlineSportsHandball, MdOutlineTune , MdPerson } from 'react-icons/md';
 import { FaArrowLeft, FaArrowRight } from 'react-icons/fa';
+import { GiRunningShoe } from "react-icons/gi";
+import { IoIosFootball } from "react-icons/io";
 
 // Data for the sport selection cards
 const sports = [
@@ -432,21 +434,32 @@ const ShoeMatchingTool = () => {
     }
 
     if (currentStepName === 'Results') {
-      const sportForm = formData[selectedSport] || {};
       return (
         <div className="step-content results-step">
-          <h3>Recommendations (Preview)</h3>
-          <p>Summary of your selections so far:</p>
-          <pre style={{ whiteSpace: 'pre-wrap', background: '#f5f5f5', padding: 12, borderRadius: 8 }}>
-            {JSON.stringify(sportForm, null, 2)}
-          </pre>
-
-          <h3>Login Required</h3>
-          <p>Please login to see your personalized shoe recommendations</p>
-          <div className="login-form">
-            <input type="email" placeholder="Email" className="form-input" />
-            <input type="password" placeholder="Password" className="form-input" />
-            <button className="login-btn">Login & View Results</button>
+          <h1 className="results-title">
+            YOUR TOP MATCHED <span className="shoes-text">SHOES</span>
+          </h1>
+          <p className="results-subtitle">BASED ON YOUR PREFERENCES AND SPORT PROFILE</p>
+          
+          <div className="shoes-preview">
+            {[1,2,3,4,5,6].map(i => (
+              <div key={i} className="shoe-placeholder"></div>
+            ))}
+            <div className="login-modal">
+              <p className="login-message">You Must Be Logged In To See Results</p>
+              <div className="login-buttons">
+                <button className="login-btn-black">LOGIN</button>
+                <button className="signup-btn-black">SIGNUP</button>
+              </div>
+            </div>
+          </div>
+          
+          <div className="email-section">
+            <p className="email-text">Send These Results To Your Email</p>
+            <div className="email-input-container">
+              <input type="email" placeholder="Enter your email address" className="email-input" />
+              <button className="send-btn">→</button>
+            </div>
           </div>
         </div>
       );
@@ -476,35 +489,40 @@ const ShoeMatchingTool = () => {
               <FaArrowLeft /> Back to Sports
             </button>
             <div className="stepper-progress">
-              {steps.map((_, index) => (
-                <div key={index} className={`step ${index <= currentStep ? 'active' : ''}`}>
-                  <div className="step-number">{index + 1}</div>
-                  <div className="step-label">{['Sport Details','Preferences','Personal Details','Results'][index]}</div>
-                </div>
-              ))}
+              {[{icon: IoIosFootball, label: 'Sport Details'}, {icon: MdOutlineTune , label: 'Preferences'}, {icon: MdPerson, label: 'Personal Details'}, {icon: GiRunningShoe, label: 'Results'}].map((step, index) => {
+                const IconComponent = step.icon;
+                return (
+                  <div key={index} className={`step ${index <= currentStep ? 'active' : ''}`}>
+                    <div className="step-icon">
+                      <IconComponent />
+                      <div className="step-label">{step.label}</div>
+                    </div>
+                  </div>
+                );
+              })}
             </div>
           </div>
+        </div>
 
-          <div className="stepper-content">
-            {renderStepContent()}
-          </div>
+        <div className="stepper-content">
+          {renderStepContent()}
+        </div>
 
-          <div className="stepper-navigation">
-            <button
-              className="nav-btn prev-btn"
-              onClick={handlePrevious}
-              disabled={currentStep === 0}
-            >
-              <FaArrowLeft /> Previous
-            </button>
-            <button
-              className="nav-btn next-btn"
-              onClick={handleNext}
-              disabled={currentStep === getConfigForSport(selectedSport).steps.length - 1}
-            >
-              Next <FaArrowRight />
-            </button>
-          </div>
+        <div className="stepper-navigation">
+          <button
+            className="nav-btn prev-btn"
+            onClick={handlePrevious}
+            disabled={currentStep === 0}
+          >
+            <FaArrowLeft /> Previous
+          </button>
+          <button
+            className="nav-btn next-btn"
+            onClick={handleNext}
+            disabled={currentStep === getConfigForSport(selectedSport).steps.length - 1}
+          >
+            Next <FaArrowRight />
+          </button>
         </div>
       </div>
     );
