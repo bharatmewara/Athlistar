@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 import { Container, Row, Col, Form, Button, Card } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
 import "./ShoeFinderAndCoaching.css";
 import Nutrition from '/images/Home/nutrition.jpg'
 import mentalhealth from '/images/Home/mentalhealth.jpg'
@@ -7,6 +8,23 @@ import injury from '/images/Home/injury.jpg'
 import specific_training from '/images/Home/specific_training.jpg'
 
 const ShoeFinderAndCoaching = () => {
+    const [selectedSport, setSelectedSport] = useState('');
+    const [playerLevel, setPlayerLevel] = useState('');
+    const [footType, setFootType] = useState('');
+    const navigate = useNavigate();
+
+    const handleLetsBegin = () => {
+        if (selectedSport && playerLevel && footType) {
+            navigate('/ShoeMatchingTool', {
+                state: {
+                    preSelectedSport: selectedSport.toLowerCase().replace(' ', '_'),
+                    preSelectedLevel: playerLevel,
+                    preSelectedFootType: footType
+                }
+            });
+        }
+    };
+
     return (
         <Container className="py-5">
             <Row>
@@ -19,41 +37,49 @@ const ShoeFinderAndCoaching = () => {
                         <Form>
                             <Form.Group className="mb-3" controlId="formSport">
                                 <Form.Label>Select Your Sport</Form.Label>
-                                <Form.Select defaultValue="">
+                                <Form.Select value={selectedSport} onChange={(e) => setSelectedSport(e.target.value)}>
                                     <option value="" disabled>
                                         -- Select a Sport --
                                     </option>
-                                    <option>Cricket</option>
-                                    <option>Football</option>
-                                    <option>Running</option>
+                                    <option value="Cricket">Cricket</option>
+                                    <option value="Football">Football</option>
+                                    <option value="Running">Running</option>
+                                    <option value="Basketball">Basketball</option>
+                                    <option value="Volleyball">Volleyball</option>
+                                    <option value="Badminton">Badminton</option>
+                                    <option value="Lawn Tennis">Lawn Tennis</option>
                                 </Form.Select>
                             </Form.Group>
 
                             <Form.Group className="mb-3" controlId="formLevel">
                                 <Form.Label>Player Level</Form.Label>
-                                <Form.Select defaultValue="">
+                                <Form.Select value={playerLevel} onChange={(e) => setPlayerLevel(e.target.value)}>
                                     <option value="" disabled>
                                         -- Select Player Level --
                                     </option>
-                                    <option>Beginner</option>
-                                    <option>Intermediate</option>
-                                    <option>Advanced</option>
+                                    <option value="Beginner">Beginner</option>
+                                    <option value="Intermediate">Intermediate</option>
+                                    <option value="Advanced">Advanced</option>
+                                    <option value="Professional">Professional</option>
+                                    <option value="World Class">World Class</option>
                                 </Form.Select>
                             </Form.Group>
 
                             <Form.Group className="mb-4" controlId="formFootType">
                                 <Form.Label>Foot Type</Form.Label>
-                                <Form.Select defaultValue="">
+                                <Form.Select value={footType} onChange={(e) => setFootType(e.target.value)}>
                                     <option value="" disabled>
                                         -- Select Foot Type --
                                     </option>
-                                    <option>Flat Foot</option>
-                                    <option>Neutral</option>
-                                    <option>High Arch</option>
+                                    <option value="Flat Foot">Flat Foot</option>
+                                    <option value="Neutral">Neutral</option>
+                                    <option value="High Arch">High Arch</option>
+                                    <option value="Low Arch">Low Arch</option>
+                                    <option value="Other">Other</option>
                                 </Form.Select>
                             </Form.Group>
-                            <Button className="shoe-match-btn">
-                                LET’S BEGIN
+                            <Button className="shoe-match-btn" onClick={handleLetsBegin}>
+                                LET'S BEGIN
                             </Button>
                         </Form>
                     </Card>
@@ -112,7 +138,7 @@ const coachingHighlights = [
         number: "2",
         title: "Mental Conditioning & Focus Training",
         image: mentalhealth,
-        description: "Build a champion’s mindset through focus drills, visualization techniques, and stress control strategies.",
+        description: "Build a champion's mindset through focus drills, visualization techniques, and stress control strategies.",
     },
     {
         number: "3",
@@ -124,7 +150,7 @@ const coachingHighlights = [
         number: "4",
         title: "Position-Specific Training",
         image: specific_training,
-        description: "Master your role with drills and tactics customized for your sport and playing position.",
+        description: "Master your role with drills and tactics customized for your sport and playing position.",
     },
 ];
 

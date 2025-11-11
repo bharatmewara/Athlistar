@@ -1,15 +1,20 @@
 import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './Hero.css';
 
 // Import images
 import hero_img1 from '/images/hero_img.jpg';
 import hero_img2 from '/images/hero_img2.jpg';
-import hero_img3 from '/images/hero_img.jpg';
 
 const images = [hero_img1, hero_img2];
 
 const Hero = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    navigate('/ShoeMatchingTool');
+  };
 
   const nextImage = () => {
     setCurrentImageIndex((prev) => (prev + 1) % images.length);
@@ -24,7 +29,7 @@ const Hero = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       nextImage();
-    }, 10000);
+    }, 5000);
     return () => clearInterval(interval);
   }, []);
 
@@ -32,7 +37,7 @@ const Hero = () => {
     <section className="hero-wrapper">
       <div
         className="hero-bg-container"
-        style={{ transform: `translateX(-${currentImageIndex * 100}%)` }}
+        style={{ transform: `translateX(-${currentImageIndex * 50}%)` }}
       >
         {images.map((img, index) => (
           <div
@@ -54,7 +59,7 @@ const Hero = () => {
             <br />
             Together, We Build Legends.
           </p>
-          <button className="cta-button">FIND MY FIT &gt;</button>
+          <button className="cta-button" onClick={handleClick}>FIND MY FIT &gt;</button>
 
           {/* Arrows */}
           <div className="arrow-controls">

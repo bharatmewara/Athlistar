@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import './ShoeMatchingTool.css';
 import { MdOutlineSportsHandball, MdOutlineTune , MdPerson } from 'react-icons/md';
 import { FaArrowLeft, FaArrowRight } from 'react-icons/fa';
@@ -227,6 +228,27 @@ const ShoeMatchingTool = () => {
   const [showStepper, setShowStepper] = useState(false);
   const [currentStep, setCurrentStep] = useState(0);
   const [formData, setFormData] = useState({});
+  const location = useLocation();
+
+  useEffect(() => {
+    if (location.state?.preSelectedSport) {
+      const sportId = location.state.preSelectedSport;
+      setSelectedSport(sportId);
+      setShowStepper(true);
+      setCurrentStep(0);
+      
+      // Pre-fill form data with selected options
+      const preFilledData = {};
+      if (location.state.preSelectedLevel) {
+        preFilledData.playerLevel = location.state.preSelectedLevel;
+      }
+      if (location.state.preSelectedFootType) {
+        preFilledData.footType = location.state.preSelectedFootType;
+      }
+      
+      setFormData(prev => ({ ...prev, [sportId]: preFilledData }));
+    }
+  }, [location.state]);
 
   const handleSportSelect = (sportId) => {
     setSelectedSport(sportId);

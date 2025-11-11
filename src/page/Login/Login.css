@@ -165,16 +165,24 @@
 }
 
 .auth-submit-btn {
-  width: 100%;
-  padding: 0.75rem;
-  background: #84cc16;
-  color: white;
+  background-color: #d0ff00;
   border: none;
-  border-radius: 8px;
-  font-size: 16px;
-  font-weight: 600;
+  padding: 0.4rem 1.2rem;
+  font-weight: bold;
+  color: #000;
   cursor: pointer;
+  height: 2.5rem;
+  width: 100%;
+  transition: transform 0.2s ease;
   margin-bottom: 1.5rem;
+  clip-path: polygon(
+    0 0,         /* top-left */
+    calc(100% - 1.2rem) 0,  /* top-right corner before cut */
+    100% 1.2rem, /* cut into top-right */
+    100% 100%,   /* bottom-right */
+    1.2rem 100%, /* cut into bottom-left */
+    0 calc(100% - 1.2rem)  /* bottom-left corner after cut */
+  );
 }
 
 .auth-submit-btn:hover {
@@ -197,6 +205,11 @@
 }
 
 .brand-section {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   text-align: center;
   color: white;
 }
@@ -209,13 +222,17 @@
 }
 
 .shoe-image {
-  max-width: 400px;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .shoe-image img {
   width: 100%;
-  height: auto;
-  filter: drop-shadow(0 10px 20px rgba(0,0,0,0.3));
+  height: 100%;
+  object-fit: cover;
 }
 
 .error-message {

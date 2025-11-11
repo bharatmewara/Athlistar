@@ -7,6 +7,7 @@ import ContactUs from "../page/ContactUs/ContactUs";
 import ScrollToTop from "../components/ScrollToTop/ScrollToTop";
 import ShoeMatchingTool from "../page/ShoeMatchingTool/ShoeMatchingTool";
 import Login from "../page/Login/Login";
+import CommunityAccess from "../page/CommunityAccess/CommunityAccess";
 
 const AppRoutes = () => {
   return <>
@@ -18,6 +19,7 @@ const AppRoutes = () => {
       <Route path="/ContactUs" element={<ContactUs />} />
       <Route path="/ShoeMatchingTool" element={<ShoeMatchingTool />} />
       <Route path="/login" element={<Login />} />
+      <Route path="/CommunityAccess" element={<CommunityAccess />} />
     </Routes>
     <Footer/>
   </>;

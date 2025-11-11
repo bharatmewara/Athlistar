@@ -161,7 +161,6 @@ const Login = () => {
       
       <div className="auth-right">
         <div className="brand-section">
-          <h1>ATHLISTAR</h1>
           <div className="shoe-image">
             <img src="/images/shoe1.jpg" alt="Athletic Shoe" />
           </div>

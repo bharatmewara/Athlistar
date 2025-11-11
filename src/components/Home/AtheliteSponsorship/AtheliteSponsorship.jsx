@@ -20,10 +20,15 @@ const AthleteSponsorship = () => {
         </div>
         <div className="athlete-right">
           <div className="video-box">
-            <img src={videoThumbnail} alt="Video thumbnail" className="video-thumbnail" />
-            <button className="play-button">
-              <img src={playIcon} alt="Play" />
-            </button>
+            <video 
+              src="/videos/athlete-sponsorship.mp4" 
+              autoPlay 
+              muted 
+              loop 
+              className="video-player"
+            >
+              Your browser does not support the video tag.
+            </video>
           </div>
         </div>
       </div>

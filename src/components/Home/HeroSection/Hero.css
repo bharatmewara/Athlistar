@@ -71,6 +71,7 @@
 
 .hero-image img {
   width: 100%;
+  height: 100%;
   max-width: 500px;
   border-radius: 12px;
   margin-top: 2rem;
@@ -86,27 +87,16 @@
 .hero-bg-container {
   display: flex;
   height: 100%;
-  width: 300%;
+  width: 200%;
   transition: transform 1s ease-in-out;
 }
 
 .hero-bg-slide {
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100vh; /* Full viewport height */
-  width: 100vw;  /* Full viewport width */
+  flex: 0 0 50%;
+  height: 100vh;
   background-position: center;
   background-repeat: no-repeat;
-  background-size: cover; /* Can be changed to 'contain' if needed */
-  opacity: 1;
-  transition: opacity 1s ease-in-out;
-  z-index: 1;
-}
-
-.hero-bg-slide.active {
-  opacity: 1;
-  z-index: 1;
+  background-size: cover;
 }
 
 /* Content */

@@ -13,7 +13,6 @@
   --card-border: #f0f0f0;
   --card-shadow: rgba(0, 0, 0, 0.08);
 }
-
 /* Base styles for the page */
 .shoe-matching-tool-page {
   font-family: 'Poppins', sans-serif; /* Fallback for sprintura */
@@ -21,6 +20,7 @@
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  margin-bottom: 2.5rem;
 }
 
 /* Header Section */
