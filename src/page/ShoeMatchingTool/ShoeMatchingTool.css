@@ -548,8 +548,23 @@
 }
 
 .prev-btn {
-  background: var(--light-grey);
-  color: var(--dark-text);
+  background-color: #bdbdbd;
+  border: none;
+  padding: 0.4rem 1.2rem;
+  font-weight: bold;
+  color: #000;
+  cursor: pointer;
+  height: 2.5rem;
+  width: 13rem;
+  transition: transform 0.2s ease;
+  clip-path: polygon(
+    0 0,         /* top-left */
+    calc(100% - 1.2rem) 0,  /* top-right corner before cut */
+    100% 1.2rem, /* cut into top-right */
+    100% 100%,   /* bottom-right */
+    1.2rem 100%, /* cut into bottom-left */
+    0 calc(100% - 1.2rem)  /* bottom-left corner after cut */
+  );
 }
 
 .prev-btn:hover:not(:disabled) {
@@ -557,12 +572,39 @@
 }
 
 .next-btn {
-  background: var(--primary-green);
-  color: var(--dark-text);
+  background-color: #d0ff00;
+  border: none;
+  padding: 0.4rem 1.2rem;
+  font-weight: bold;
+  color: #000;
+  cursor: pointer;
+  height: 2.5rem;
+  width: 13rem;
+  transition: transform 0.2s ease;
+  clip-path: polygon(
+    0 0,         /* top-left */
+    calc(100% - 1.2rem) 0,  /* top-right corner before cut */
+    100% 1.2rem, /* cut into top-right */
+    100% 100%,   /* bottom-right */
+    1.2rem 100%, /* cut into bottom-left */
+    0 calc(100% - 1.2rem)  /* bottom-left corner after cut */
+  );
 }
 
 .next-btn:hover:not(:disabled) {
-  background: #b8e600;
+  transform: scale(1.05);
+  background-color: #000;
+  color: #fff;
+  box-shadow: inset 0 0 2px 2px white;
+  /* 👇 keep clip-path consistent */
+  clip-path: polygon(
+    0 0,
+    calc(100% - 1.2rem) 0,
+    100% 1.2rem,
+    100% 100%,
+    1.2rem 100%,
+    0 calc(100% - 1.2rem)
+  );
 }
 
 .nav-btn:disabled {

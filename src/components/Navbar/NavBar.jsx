@@ -2,31 +2,26 @@ import React from 'react';
 import './NavBar.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Logo from '/images/Athlistar_logo-white.png';
-import { AppProvider } from '@toolpad/core/AppProvider';
-import { Account } from '@toolpad/core/Account';
-import { NavLink } from 'react-router-dom';
-
-const demoSession = {
-  user: {
-    name: 'Bharat Kashyap',
-    email: 'bharatkashyap@outlook.com',
-    image: 'https://avatars.githubusercontent.com/u/19550456',
-  },
-};
+import { NavLink, useNavigate } from 'react-router-dom';
+import { useAuth } from '../../context/AuthContext';
+import { signOut } from 'firebase/auth';
+import { auth } from '../../firebase/config';
 
 function NavBar() {
-  const [session, setSession] = React.useState(demoSession);
+  const { currentUser } = useAuth();
+  const navigate = useNavigate();
 
-  const authentication = React.useMemo(() => {
-    return {
-      signIn: () => {
-        setSession(demoSession);
-      },
-      signOut: () => {
-        setSession(null);
-      },
-    };
-  }, []);
+  const handleLogin = () => {
+    navigate('/login');
+  };
+
+  const handleLogout = async () => {
+    try {
+      await signOut(auth);
+    } catch (error) {
+      console.error('Error signing out:', error);
+    }
+  };
 
   return (
     <nav className="navbar navbar-expand-lg navbar-dark custom-navbar">
@@ -114,9 +109,23 @@ function NavBar() {
               </NavLink>
             </li>
             <li className="nav-item">
-              <AppProvider authentication={authentication} session={session}>
-                <Account />
-              </AppProvider>
+              {currentUser ? (
+                <div className="d-flex align-items-center">
+                  <img
+                    src={currentUser.photoURL || `https://ui-avatars.com/api/?name=${currentUser.email}&background=667eea&color=fff`}
+                    alt="User Avatar"
+                    className="rounded-circle me-2"
+                    style={{ width: '32px', height: '32px' }}
+                  />
+                  <button className="btn btn-outline-light btn-sm" onClick={handleLogout}>
+                    Logout
+                  </button>
+                </div>
+              ) : (
+                <button className="btn btn-outline-light" onClick={handleLogin}>
+                  Login/Signup
+                </button>
+              )}
             </li>
           </ul>
         </div>

@@ -6,6 +6,7 @@ import About from "../page/AboutAthlistar/AboutAthlistar";
 import ContactUs from "../page/ContactUs/ContactUs";
 import ScrollToTop from "../components/ScrollToTop/ScrollToTop";
 import ShoeMatchingTool from "../page/ShoeMatchingTool/ShoeMatchingTool";
+import Login from "../page/Login/Login";
 
 const AppRoutes = () => {
   return <>
@@ -16,6 +17,7 @@ const AppRoutes = () => {
       <Route path="/AboutAthlistar" element={<About />} />
       <Route path="/ContactUs" element={<ContactUs />} />
       <Route path="/ShoeMatchingTool" element={<ShoeMatchingTool />} />
+      <Route path="/login" element={<Login />} />
     </Routes>
     <Footer/>
   </>;
