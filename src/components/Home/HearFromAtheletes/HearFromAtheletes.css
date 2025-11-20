@@ -144,6 +144,24 @@
   border-color: #c6ff00;
 }
 
+@keyframes slideInRight {
+  0% {
+    transform: translateX(30px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInLeft {
+  0% {
+    transform: translateX(-30px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
 @media (max-width: 1100px) {
   .hear-from-athletes-cards {
     flex-direction: column;

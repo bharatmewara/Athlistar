@@ -7,7 +7,6 @@ import ShopSection from '../../components/Home/ShopSection/ShopSection';
 import CommunityAccess from '../../components/Home/CommunityAccess/CommunityAccess';
 import HearFromAtheletes from '../../components/Home/HearFromAtheletes/HearFromAtheletes';
 
-
 function Home() {
   return (
     <>

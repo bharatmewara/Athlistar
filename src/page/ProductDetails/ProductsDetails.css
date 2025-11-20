@@ -1,0 +1,186 @@
+/* src/pages/ProductDetails.css */
+
+.details-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  font-family: 'Inter', sans-serif;
+}
+
+.back-btn {
+  background: none;
+  border: none;
+  font-size: 1rem;
+  cursor: pointer;
+  margin-bottom: 20px;
+  color: #666;
+}
+
+.details-wrapper {
+  display: flex;
+  gap: 50px;
+}
+
+/* Left Image */
+.details-image {
+  flex: 1;
+  background: #f9f9f9;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+  height: 500px; /* Fixed height */
+}
+
+.details-image img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  filter: drop-shadow(10px 10px 20px rgba(0,0,0,0.1));
+}
+
+/* Right Content */
+.details-info {
+  flex: 1;
+}
+
+.details-brand {
+  color: #bcfe2f; /* Neon Green brand color */
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 10px;
+  background: #000;
+  display: inline-block;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 0.8rem;
+}
+
+.details-title {
+  font-size: 2.5rem;
+  margin: 0 0 15px 0;
+  line-height: 1.1;
+}
+
+.details-rating {
+  color: #f59e0b;
+  margin-bottom: 20px;
+  font-size: 1.1rem;
+}
+
+.review-count {
+  color: #888;
+  font-size: 0.9rem;
+  margin-left: 8px;
+}
+
+.details-price-box {
+  display: flex;
+  align-items: baseline;
+  gap: 15px;
+  margin-bottom: 25px;
+  padding-bottom: 25px;
+  border-bottom: 1px solid #eee;
+}
+
+.d-price {
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.d-mrp {
+  color: #999;
+  text-decoration: line-through;
+  font-size: 1.2rem;
+}
+
+.d-off {
+  color: #e11d48;
+  font-weight: 600;
+}
+
+.details-desc {
+  line-height: 1.6;
+  color: #555;
+  margin-bottom: 30px;
+}
+
+.size-grid {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+  margin-bottom: 30px;
+}
+
+.size-box {
+  border: 1px solid #ddd;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.size-box:hover {
+  border-color: #000;
+  background: #000;
+  color: white;
+}
+
+.size-box.out-of-stock {
+  text-decoration: line-through;
+  color: #999;
+  background-color: #f5f5f5;
+  cursor: not-allowed;
+  pointer-events: none; /* Prevents hover effects */
+}
+
+/* Platform Buttons */
+.platform-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.btn-platform {
+  text-align: center;
+  padding: 15px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: transform 0.2s;
+}
+
+.btn-platform:hover {
+  transform: translateY(-2px);
+}
+
+.btn-platform.black {
+  background: #000;
+  color: #fff;
+}
+
+.btn-platform.yellow {
+  background: #FF9900; /* Amazon Color */
+  color: #000;
+}
+
+.btn-platform.blue {
+  background: #2874f0; /* Flipkart Color */
+  color: #fff;
+}
+
+@media (max-width: 768px) {
+  .details-wrapper {
+    flex-direction: column;
+  }
+  .details-image {
+    height: 300px;
+  }
+}

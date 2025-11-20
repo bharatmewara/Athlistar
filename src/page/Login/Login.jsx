@@ -1,11 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { signInWithEmailAndPassword, createUserWithEmailAndPassword, signInWithPopup, GoogleAuthProvider, FacebookAuthProvider } from 'firebase/auth';
 import { auth } from '../../firebase/config';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 import { FaGoogle, FaFacebook, FaArrowLeft } from 'react-icons/fa';
 import './Login.css';
 
 const Login = () => {
+  const [searchParams] = useSearchParams();
   const [isLogin, setIsLogin] = useState(true);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -14,6 +15,15 @@ const Login = () => {
   const [error, setError] = useState('');
   const navigate = useNavigate();
 
+  useEffect(() => {
+    const mode = searchParams.get('mode');
+    if (mode === 'signup') {
+      setIsLogin(false);
+    } else {
+      setIsLogin(true);
+    }
+  }, [searchParams]);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError('');
@@ -21,10 +31,11 @@ const Login = () => {
     try {
       if (isLogin) {
         await signInWithEmailAndPassword(auth, email, password);
+        navigate('/');
       } else {
         await createUserWithEmailAndPassword(auth, email, password);
+        navigate('/onboarding');
       }
-      navigate('/');
     } catch (error) {
       setError(error.message);
     }
@@ -34,7 +45,7 @@ const Login = () => {
     try {
       const provider = new GoogleAuthProvider();
       await signInWithPopup(auth, provider);
-      navigate('/');
+      navigate('/onboarding');
     } catch (error) {
       setError(error.message);
     }
@@ -44,7 +55,7 @@ const Login = () => {
     try {
       const provider = new FacebookAuthProvider();
       await signInWithPopup(auth, provider);
-      navigate('/');
+      navigate('/onboarding');
     } catch (error) {
       setError(error.message);
     }

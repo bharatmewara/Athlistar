@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import './ShoeMatchingTool.css';
 import { MdOutlineSportsHandball, MdOutlineTune , MdPerson } from 'react-icons/md';
 import { FaArrowLeft, FaArrowRight } from 'react-icons/fa';
@@ -16,6 +16,8 @@ const sports = [
   { id: 'lawn_tennis', name: 'Lawn Tennis', image: '/images/Sports/Lawn Tennis.png' },
   { id: 'running', name: 'Running', image: '/images/Sports/klipartz.com (2).png' },
 ];
+
+
 
 // Comprehensive form configuration for each sport (fields per step)
 const formConfigs = {
@@ -229,6 +231,15 @@ const ShoeMatchingTool = () => {
   const [currentStep, setCurrentStep] = useState(0);
   const [formData, setFormData] = useState({});
   const location = useLocation();
+  const navigate = useNavigate();
+
+  const HandleLogin = () => {
+    navigate('/login?mode=signin');
+  };
+
+  const HandleSignup = () => {
+    navigate('/login?mode=signup');
+  };
 
   useEffect(() => {
     if (location.state?.preSelectedSport) {
@@ -470,8 +481,8 @@ const ShoeMatchingTool = () => {
             <div className="login-modal">
               <p className="login-message">You Must Be Logged In To See Results</p>
               <div className="login-buttons">
-                <button className="login-btn-black">LOGIN</button>
-                <button className="signup-btn-black">SIGNUP</button>
+                <button className="login-btn-black" onClick={HandleLogin}>LOGIN</button>
+                <button className="signup-btn-black" onClick={HandleSignup}>SIGNUP</button>
               </div>
             </div>
           </div>
