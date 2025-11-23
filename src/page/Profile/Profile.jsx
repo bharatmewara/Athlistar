@@ -1,136 +1,126 @@
-import React from "react";
+import React, { useState } from "react";
 import { useAuth } from "../../context/AuthContext";
-import {
-  FaBoxOpen,
-  FaHeart,
-  FaTicketAlt,
-  FaUserCircle,
-  FaMapMarkerAlt,
-  FaShoppingBag,
-} from "react-icons/fa";
+import { FaBoxOpen, FaHeart, FaTicketAlt, FaUserCircle, FaMapMarkerAlt, FaShoppingBag, FaSignOutAlt } from "react-icons/fa";
 import "./Profile.css";
 
 const Profile = () => {
   const { currentUser } = useAuth();
+  const [activeTab, setActiveTab] = useState("dashboard");
 
-  const avatarUrl =
-    currentUser?.photoURL ||
-    `https://ui-avatars.com/api/?name=${encodeURIComponent(
-      currentUser?.displayName || currentUser?.email || "User"
-    )}&background=d0ff00&color=000&size=128`;
+  // Helper to render content based on active tab
+  const renderContent = () => {
+    switch (activeTab) {
+      case "orders":
+        return (
+          <div className="profile-section">
+            <h2>My Orders</h2>
+            <div className="order-list">
+              <div className="empty-state">No orders found. Start shopping!</div>
+              {/* Example Order Item */}
+              {/* <div className="order-item">
+                  <div className="order-header">Order #12345 - <span className="status-shipped">Shipped</span></div>
+                  <div className="order-details">2 items | Total: $120.00</div>
+              </div> */}
+            </div>
+          </div>
+        );
+      case "wishlist":
+        return (
+          <div className="profile-section">
+            <h2>My Wishlist</h2>
+            <div className="wishlist-grid">
+               <div className="empty-state">Your wishlist is empty.</div>
+            </div>
+          </div>
+        );
+      case "account":
+        return (
+          <div className="profile-section">
+            <h2>Account Information</h2>
+            <form className="profile-form">
+              <div className="form-group">
+                <label>Display Name</label>
+                <input type="text" defaultValue={currentUser?.displayName} />
+              </div>
+              <div className="form-group">
+                <label>Email</label>
+                <input type="email" defaultValue={currentUser?.email} disabled />
+              </div>
+              <div className="form-group">
+                <label>Phone Number</label>
+                <input type="tel" placeholder="+1 (555) 000-0000" />
+              </div>
+              <button type="submit" className="save-btn">Save Changes</button>
+            </form>
+          </div>
+        );
+      case "addresses":
+        return (
+          <div className="profile-section">
+            <h2>Saved Addresses</h2>
+            <button className="add-address-btn">+ Add New Address</button>
+            <div className="address-list">
+              <p>No addresses saved.</p>
+            </div>
+          </div>
+        );
+      default: // Dashboard
+        return (
+          <div className="dashboard-home">
+            <div className="welcome-banner">
+              <h2>Welcome, {currentUser?.displayName || "Athlete"}!</h2>
+              <p>Track your performance, manage your orders, and update your profile.</p>
+            </div>
+            <div className="quick-stats">
+              <div className="q-stat"><span>0</span> Orders</div>
+              <div className="q-stat"><span>0</span> Wishlist</div>
+              <div className="q-stat"><span>0</span> Coupons</div>
+            </div>
+          </div>
+        );
+    }
+  };
 
   return (
     <div className="profile-page">
-      <div className="profile-left">
-        <div className="left-top">
-          <div className="avatar-wrap">
-            <img src={avatarUrl} alt="avatar" className="avatar-img" />
+      <div className="profile-sidebar">
+        <div className="user-brief">
+          <div className="avatar-circle">
+             {currentUser?.photoURL ? <img src={currentUser.photoURL} alt="User" /> : (currentUser?.displayName?.charAt(0) || "U")}
           </div>
-          <div className="user-info">
-            <div className="user-name">
-              {currentUser?.displayName || currentUser?.email?.split("@")[0]}
-            </div>
-            <div className="user-email">{currentUser?.email}</div>
-            <a className="small-link" href="/account">Logout</a>
+          <div className="brief-info">
+            <h3>{currentUser?.displayName || "User"}</h3>
+            <span>{currentUser?.email}</span>
           </div>
         </div>
 
         <nav className="profile-nav">
-          <button className="nav-item active">
-            <span className="nav-left">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
-                <path d="M3 13h8V3H3v10zM3 21h8v-6H3v6zM13 21h8V11h-8v10zM13 3v6h8V3h-8z" fill="#000"/>
-              </svg>
-            </span>
-            <span className="nav-text">Dashboard</span>
+          <button className={activeTab === "dashboard" ? "active" : ""} onClick={() => setActiveTab("dashboard")}>
+            <FaUserCircle /> Dashboard
           </button>
-
-          <button className="nav-item">
-            <span className="nav-left">📦</span>
-            <span className="nav-text">My Orders</span>
+          <button className={activeTab === "orders" ? "active" : ""} onClick={() => setActiveTab("orders")}>
+            <FaBoxOpen /> My Orders
           </button>
-
-          <button className="nav-item">
-            <span className="nav-left">💖</span>
-            <span className="nav-text">My Wishlist</span>
+          <button className={activeTab === "wishlist" ? "active" : ""} onClick={() => setActiveTab("wishlist")}>
+            <FaHeart /> Wishlist
           </button>
-
-          <button className="nav-item">
-            <span className="nav-left">🎟️</span>
-            <span className="nav-text">Coupons</span>
+          <button className={activeTab === "coupons" ? "active" : ""} onClick={() => setActiveTab("coupons")}>
+            <FaTicketAlt /> Coupons
           </button>
-
-          <button className="nav-item">
-            <span className="nav-left">⚙️</span>
-            <span className="nav-text">Account Info</span>
+          <button className={activeTab === "account" ? "active" : ""} onClick={() => setActiveTab("account")}>
+            <FaUserCircle /> Account Info
           </button>
-
-          <button className="nav-item">
-            <span className="nav-left">📍</span>
-            <span className="nav-text">Addresses</span>
+          <button className={activeTab === "addresses" ? "active" : ""} onClick={() => setActiveTab("addresses")}>
+            <FaMapMarkerAlt /> Addresses
           </button>
-
-          <button className="nav-item">
-            <span className="nav-left">🛒</span>
-            <span className="nav-text">Shop</span>
+          <button className="logout-btn" onClick={() => {/* Add logout logic */}}>
+            <FaSignOutAlt /> Logout
           </button>
         </nav>
       </div>
 
-      <div className="profile-right">
-        <div className="welcome-row">
-          <div className="welcome-left">
-            <h2 className="welcome-title">Welcome!</h2>
-            <p className="welcome-sub">
-              Hi <strong>{currentUser?.displayName || currentUser?.email}</strong> — today is a great day to
-              check your account. You can check your <a href="/orders">orders</a> or have a look at your <a href="/wishlist">wishlist</a>.
-            </p>
-          </div>
-          <div className="welcome-right">
-            <div className="mini-stats">
-              <div className="stat">
-                <div className="stat-icon">📦</div>
-                <div className="stat-label">2 Orders</div>
-              </div>
-              <div className="stat">
-                <div className="stat-icon">💝</div>
-                <div className="stat-label">5 Wishlist</div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div className="cards-grid">
-          <div className="card" onClick={() => window.location.href = "/orders"}>
-            <div className="card-icon"><FaBoxOpen /></div>
-            <div className="card-title">MY ORDERS</div>
-          </div>
-
-          <div className="card" onClick={() => window.location.href = "/wishlist"}>
-            <div className="card-icon"><FaHeart /></div>
-            <div className="card-title">WISHLIST</div>
-          </div>
-
-          <div className="card" onClick={() => window.location.href = "/coupons"}>
-            <div className="card-icon"><FaTicketAlt /></div>
-            <div className="card-title">COUPONS</div>
-          </div>
-
-          <div className="card" onClick={() => window.location.href = "/account"}>
-            <div className="card-icon"><FaUserCircle /></div>
-            <div className="card-title">ACCOUNT</div>
-          </div>
-
-          <div className="card" onClick={() => window.location.href = "/addresses"}>
-            <div className="card-icon"><FaMapMarkerAlt /></div>
-            <div className="card-title">ADDRESSES</div>
-          </div>
-
-          <div className="card" onClick={() => window.location.href = "/shop"}>
-            <div className="card-icon"><FaShoppingBag /></div>
-            <div className="card-title">SHOP</div>
-          </div>
-        </div>
+      <div className="profile-content-area">
+        {renderContent()}
       </div>
     </div>
   );
